@@ -6,7 +6,7 @@ on:
       worker_count:
         description: "Number of worker nodes"
         required: true
-        default: "3"
+        default: "1"
 
 jobs:
   provision:
