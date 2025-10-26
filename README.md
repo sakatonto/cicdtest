@@ -66,6 +66,7 @@ git remote add origin https://github.com/<your-username>/<new-repo>.git
 ```bash
 git push -u origin main
 ```
+
 > **Note:** After cloning your own repository, you can move or copy these files into it to customize, run, or manage workflows there. This step assumes you have already **pushed the workflow, playbook, and inventory files to your repository**.
 
 ### 2. (Optional) Trigger workflow from GitHub web
