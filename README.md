@@ -30,8 +30,8 @@ This repository provides an **Ansible playbook** and **GitHub Actions workflow**
 Clone the repository locally (optional for triggering workflow, required for local testing):
 
 ```bash
-git clone https://github.com/<your-org>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/gerardpontino/multipass-k3s-github-actions.git
+cd multipass-k3s-github-actions
 ```
 
 ### 2. Trigger workflow from GitHub web
@@ -44,7 +44,7 @@ Click Run workflow.
 ### 3. Trigger workflow from another machine using GitHub CLI
 ```bash
 gh workflow run cluster-provision.yml \
-  --repo <your-org>/<your-repo> \
+  --repo https://github.com/gerardpontino/multipass-k3s-github-actions.git \
   --field worker_count=2
 ```
 Notes:
