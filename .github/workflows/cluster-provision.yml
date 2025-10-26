@@ -1,0 +1,25 @@
+name: K3s Cluster Provisioning
+
+on:
+  workflow_dispatch:
+    inputs:
+      worker_count:
+        description: "Number of worker nodes"
+        required: true
+        default: "3"
+
+jobs:
+  provision:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: brew install ansible
+
+      - name: Install Multipass
+        run: brew install multipass
+
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i inventory.yml dynamic_k3s_provisioning.yaml -e "worker_count=${{ github.event.inputs.worker_count }}"
