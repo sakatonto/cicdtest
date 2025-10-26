@@ -51,11 +51,20 @@ Leave this terminal open or run it as a background service to keep the runner ac
 
 ### 1. Pull the repository
 
-Clone the repository locally (optional for triggering workflow, required for local testing):
+Clone the repository locally (optional for triggering workflow, required for local testing) and push to your own repository
 
 ```bash
 git clone https://github.com/gerardpontino/multipass-k3s-github-actions.git
 cd multipass-k3s-github-actions
+```
+```bash
+git remote remove origin
+```
+```bash
+git remote add origin https://github.com/<your-username>/<new-repo>.git
+```
+```bash
+git push -u origin main
 ```
 > **Note:** After cloning your own repository, you can move or copy these files into it to customize, run, or manage workflows there. This step assumes you have already **pushed the workflow, playbook, and inventory files to your repository**.
 
