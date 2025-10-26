@@ -82,7 +82,7 @@ If you want to test the workflow via the GitHub web interface:
 
 ### 3. Trigger workflow from another machine using GitHub CLI
 ```bash
-gh workflow run /.github/workflows/cluster-provision.yml \
+gh workflow run .github/workflows/cluster-provision.yml \
   --repo <your-org>/<your-repo> \
   --field worker_count=2
 ```
