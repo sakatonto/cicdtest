@@ -23,3 +23,6 @@ jobs:
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i inventory.yml dynamic_k3s_provisioning.yaml -e "worker_count=${{ github.event.inputs.worker_count }}"
+        env:
+          PATH: /opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH
+
