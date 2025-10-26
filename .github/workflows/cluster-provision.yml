@@ -15,14 +15,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Ansible
-        run: brew install ansible
+      - name: Ensure PATH includes Homebrew
+        run: echo "PATH=$PATH:/opt/homebrew/bin" >> $GITHUB_ENV
 
-      - name: Install Multipass
-        run: brew install multipass
+      - name: Cleanup existing Multipass VMs
+        run: |
+          echo "Deleting old k3s-master and worker nodes if they exist..."
+          for vm in k3s-master k3s-worker-*; do
+            if multipass list | grep -q "$vm"; then
+              multipass delete $vm
+              multipass purge
+            fi
+          done
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i inventory.yml dynamic_k3s_provisioning.yaml -e "worker_count=${{ github.event.inputs.worker_count }}"
         env:
           PATH: /opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH
-
