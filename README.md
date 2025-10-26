@@ -57,6 +57,7 @@ Clone the repository locally (optional for triggering workflow, required for loc
 git clone https://github.com/gerardpontino/multipass-k3s-github-actions.git
 cd multipass-k3s-github-actions
 ```
+> **Note:** After cloning your own repository, you can move or copy these files into it to customize, run, or manage workflows there. This step assumes you have already **pushed the workflow, playbook, and inventory files to your repository**.
 
 ### 2. (Optional) Trigger workflow from GitHub web
 
