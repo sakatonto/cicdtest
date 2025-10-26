@@ -73,7 +73,7 @@ If you want to test the workflow via the GitHub web interface:
 ### 3. Trigger workflow from another machine using GitHub CLI
 ```bash
 gh workflow run cluster-provision.yml \
-  --repo https://github.com/gerardpontino/multipass-k3s-github-actions.git \
+  --repo <your-org>/<your-repo> \
   --field worker_count=2
 ```
 Notes:
@@ -123,8 +123,3 @@ The worker_count input allows you to scale worker nodes dynamically.
 GitHub Actions automatically checks out the repo, so other machines can trigger workflows without having local files.
 
 Workflow logs and status are available in the GitHub Actions UI.
-
-
-
-
-
