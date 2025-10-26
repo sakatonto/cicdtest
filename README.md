@@ -23,6 +23,30 @@ This repository provides an **Ansible playbook** and **GitHub Actions workflow**
 
 ---
 
+## Setting Up a GitHub Actions Self-Hosted Runner on macOS
+
+1. Go to your repository on GitHub → **Settings → Actions → Runners → Add Runner**.
+2. Select **macOS** as the runner OS.
+3. Download the runner package and extract it:
+
+```bash
+mkdir actions-runner && cd actions-runner
+curl -O -L https://github.com/actions/runner/releases/download/v2.329.0/actions-runner-osx-x64-2.329.0.tar.gz
+tar xzf ./actions-runner-osx-x64-2.329.0.tar.gz
+```
+### 4. Configure the runner with your repository:
+```bash
+./config.sh --url https://github.com/<your-org>/<your-repo> --token <generated-token>
+```
+### 5. Start the runner.
+```bash
+./run.sh
+```
+The runner will now listen for jobs from your repository.
+
+Leave this terminal open or run it as a background service to keep the runner active.
+
+
 ## Usage
 
 ### 1. Pull the repository
@@ -34,12 +58,16 @@ git clone https://github.com/gerardpontino/multipass-k3s-github-actions.git
 cd multipass-k3s-github-actions
 ```
 
-### 2. Trigger workflow from GitHub web
-Go to Actions → [Workflow Name] → Run workflow.
+### 2. (Optional) Trigger workflow from GitHub web
 
-Set the number of worker nodes to provision.
+If you want to test the workflow via the GitHub web interface:
 
-Click Run workflow.
+1. Go to **Actions → [Workflow Name] → Run workflow**.
+2. Set the **number of worker nodes** to provision.
+3. Click **Run workflow**.
+
+> **Note:** This step is optional if you prefer triggering the workflow via GitHub CLI or running locally.
+
 
 ### 3. Trigger workflow from another machine using GitHub CLI
 ```bash
