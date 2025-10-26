@@ -2,6 +2,7 @@
 - hosts: localhost
   vars:
     worker_count: "{{ worker_count | default(3) | int }}"
+    ansible_python_interpreter: /opt/homebrew/bin/python3
 
   tasks:
     - name: Check and delete existing master and worker nodes if they exist
